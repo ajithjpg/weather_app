@@ -36,7 +36,7 @@ export const currentWeatherData = async (data, key) => {
 
   const currentWeatherData = await response.json();
 
-  currentWeatherIcon.src = `../img/animated/${currentWeatherData.weather[0].icon}.svg`;
+  currentWeatherIcon.src = `../src/assets/img/animated/${currentWeatherData.weather[0].icon}.svg`;
   currentWeatherTemperature.innerHTML = await roundDegree(currentWeatherData.main.temp);
   currentWeatherDescription.innerHTML = await capitalize(currentWeatherData.weather[0].description);
   currentLocation.innerHTML = currentWeatherData.name;
