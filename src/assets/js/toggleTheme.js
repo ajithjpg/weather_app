@@ -7,7 +7,6 @@ function themeselect(color) {
   localStorage.setItem('theme',color);
 
   var theme = document.createElement('div');
-  theme.classList.remove('theme_icon');
   theme.classList.add('theme_icon');
   theme.innerHTML = current_theme_icon(color);
   theme_icon.append(theme);
