@@ -1,16 +1,12 @@
-import { filterForecastData } from "./filterForecastData.js";
+
 import { roundDegree, formatDate } from "./convertUnits.js";
 
 export const weatherForecastData = async (data, key) => {
+  
   const hourlyWeatherForecastDate = document.querySelectorAll(".hourly-weather-forecast-date");
   const hourlyWeatherForecastTime = document.querySelectorAll(".hourly-weather-forecast-time");
   const hourlyWeatherForecastTemperature = document.querySelectorAll(".hourly-weather-forecast-temperature");
 
-  const dailyWeatherForecastDate = document.querySelectorAll(".daily-weather-forecast-date");
-  const dailyWeatherForecastTime = document.querySelectorAll(".daily-weather-forecast-time");
-  const dailyWeatherForecastIcon = document.querySelectorAll(".daily-weather-forecast-icon");
-  const dailyWeatherForecastTemperature = document.querySelectorAll(".daily-weather-forecast-temperature");
-  const dailyWeatherForecastDescription = document.querySelectorAll(".daily-weather-forecast-description");
 
   let API_URL;
 
@@ -34,7 +30,7 @@ export const weatherForecastData = async (data, key) => {
 
   const weatherForecastData = await response.json();
 
-  await filterForecastData(weatherForecastData);
+
 
   for (let index = 0; index < 5; index++) {
     hourlyWeatherForecastDate[index].innerHTML = await formatDate(weatherForecastData.list[index].dt, "day");
@@ -42,11 +38,4 @@ export const weatherForecastData = async (data, key) => {
     hourlyWeatherForecastTemperature[index].innerHTML = await roundDegree(weatherForecastData.list[index].main.temp);
   }
 
-  for (let index = 0; index < 40; index++) {
-    dailyWeatherForecastDate[index].innerHTML = await formatDate(weatherForecastData.list[index].dt, "short");
-    dailyWeatherForecastTime[index].innerHTML = await formatDate(weatherForecastData.list[index].dt, "hour");
-    dailyWeatherForecastIcon[index].src = `../img/static/${weatherForecastData.list[index].weather[0].icon}.svg`;
-    dailyWeatherForecastTemperature[index].innerHTML = await roundDegree(weatherForecastData.list[index].main.temp);
-    dailyWeatherForecastDescription[index].innerHTML = weatherForecastData.list[index].weather[0].main;
-  }
 };

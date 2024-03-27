@@ -2,6 +2,10 @@ import { endLoadingState } from "./setLoadingState.js";
 import { themeIcons } from "./themeIcons.js";
 
 export const handleError = async (error, event) => {
+
+  let utterance = new SpeechSynthesisUtterance(error);
+  speechSynthesis.speak(utterance)
+
   const body = document.querySelector("body");
 
   const alert = document.createElement("div");

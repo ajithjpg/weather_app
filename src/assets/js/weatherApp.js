@@ -8,11 +8,10 @@ const API_KEY = '10e3f06df2d448d1c9b9ded492291c94';
 
 const searchBoxInput = document.querySelector(".search-box-input");
 const gpsButton = document.querySelector(".gps-button");
-const ctaButton = document.querySelector(".cta-button");
+
 const topButton = document.querySelector(".top-button");
 
 createHourlyCards();
-createDailyCards();
 
 const fetchWeatherData = async (data) => {
   try {
@@ -65,9 +64,7 @@ searchBoxInput.addEventListener("keyup", async (event) => {
 
 gpsButton.addEventListener("click", getUserLocation);
 
-ctaButton.addEventListener("click", () => {
-  window.open("https://github.com/pekkiriscim/weather");
-});
+
 
 topButton.addEventListener("click", scrollToTop);
 
